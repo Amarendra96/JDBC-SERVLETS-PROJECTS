@@ -1,0 +1,36 @@
+package com.jsp.jdbc.CRUD_Operatin;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class SelectOrRetriveDemo {
+	public static void main(String[] args) {
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_db","root","tiger");
+			PreparedStatement ps = connection.prepareStatement("select * from student");
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				int sId = rs.getInt("sId");
+				System.out.println("sID"+sId);
+				String sName = rs.getString("sName");
+				System.out.println("SName"+sName);
+				
+				String sEmail = rs.getString("sEmail");
+				System.out.println("sEmail"+sEmail);
+				
+				String sAddress = rs.getString("sAddress");
+				System.out.println("sAddress"+sAddress);
+				System.out.println("=======================================");
+				
+			}
+		} catch (ClassNotFoundException|SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

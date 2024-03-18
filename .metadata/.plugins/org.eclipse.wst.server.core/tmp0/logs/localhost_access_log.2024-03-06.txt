@@ -1,0 +1,4 @@
+127.0.0.1 - - [06/Mar/2024:22:10:07 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [06/Mar/2024:22:10:08 +0530] "GET /ServletProject_Calculator/index.jsp HTTP/1.1" 200 376
+0:0:0:0:0:0:0:1 - - [06/Mar/2024:22:10:12 +0530] "GET /ServletProject_Calculator/ADD.jsp HTTP/1.1" 200 340
+0:0:0:0:0:0:0:1 - - [06/Mar/2024:22:10:21 +0530] "GET /ServletProject_Calculator/AddServlet?num1=14&num2=25 HTTP/1.1" 200 22

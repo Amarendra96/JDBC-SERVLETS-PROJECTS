@@ -1,0 +1,11 @@
+127.0.0.1 - - [07/Mar/2024:23:24:37 +0530] "GET / HTTP/1.1" 404 751
+0:0:0:0:0:0:0:1 - - [07/Mar/2024:23:24:39 +0530] "GET /ServletProject_Calculator/index.jsp HTTP/1.1" 200 376
+0:0:0:0:0:0:0:1 - - [07/Mar/2024:23:24:39 +0530] "GET /favicon.ico HTTP/1.1" 404 762
+0:0:0:0:0:0:0:1 - - [07/Mar/2024:23:24:45 +0530] "GET /ServletProject_Calculator/ADD.jsp HTTP/1.1" 200 340
+0:0:0:0:0:0:0:1 - - [07/Mar/2024:23:25:00 +0530] "GET /ServletProject_Calculator/AddServlet?num1=52&num2=36 HTTP/1.1" 200 22
+0:0:0:0:0:0:0:1 - - [07/Mar/2024:23:25:06 +0530] "GET /ServletProject_Calculator/MULTIPLY.jsp HTTP/1.1" 200 345
+0:0:0:0:0:0:0:1 - - [07/Mar/2024:23:25:12 +0530] "GET /ServletProject_Calculator/MultiplyServlet?num1=25&num2=5 HTTP/1.1" 200 22
+0:0:0:0:0:0:0:1 - - [07/Mar/2024:23:25:19 +0530] "GET /ServletProject_Calculator/DIVIDE.jsp HTTP/1.1" 200 343
+0:0:0:0:0:0:0:1 - - [07/Mar/2024:23:26:19 +0530] "GET /ServletProject_Calculator/DivideServlet?num1=35&num2=4 HTTP/1.1" 200 20
+0:0:0:0:0:0:0:1 - - [07/Mar/2024:23:26:32 +0530] "GET /ServletProject_Calculator/MODULUS.jsp HTTP/1.1" 200 344
+0:0:0:0:0:0:0:1 - - [07/Mar/2024:23:26:42 +0530] "GET /ServletProject_Calculator/ModulusServlet?num1=35&num2=4 HTTP/1.1" 200 20

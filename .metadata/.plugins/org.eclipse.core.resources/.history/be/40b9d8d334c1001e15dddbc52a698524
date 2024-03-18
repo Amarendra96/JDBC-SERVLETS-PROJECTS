@@ -1,0 +1,38 @@
+package com.jsp.jdbc.CRUD_Operatin;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+public class UpdateDemo {
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the updated value:");
+		System.out.println("Enter the sAddress:");
+		String sAddress = scanner.next();
+		System.out.println("Enter the sId:");
+		int sId = scanner.nextInt();
+		
+		
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection connection = DriverManager.getConnection("jdbc:mysql://loacalhost:3306/jdbc_db","root","tiger");
+				PreparedStatement ps = connection.prepareStatement("update into student set sAddress=? where sId=?");
+				ps.setString(1, sAddress);
+				ps.setInt(2, sId);
+				int i = ps.executeUpdate();
+				if (i>0) {
+					System.out.println("Updated sucessfully!!");
+				} else {
+					System.out.println("not updated!!");
+				}
+				connection.close();
+				
+		} catch (ClassNotFoundException|SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+}

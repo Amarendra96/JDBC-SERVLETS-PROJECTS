@@ -1,0 +1,152 @@
+package com.jsp.jdbc.CRUD_Operatin;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Properties;
+import java.util.Scanner;
+
+public class InsertDemo {
+
+	//	public static void main(String[] args) {
+	//		//User Values
+	//		int sId=2;
+	//		String sName="Harsh";
+	//		String sEmail="Harsh@123";
+	//		String sAddress="Bihar";
+	//
+	//		try {
+	//			Class.forName("com.mysql.cj.jdbc.Driver");
+	//			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_db", "root","tiger");
+	//			PreparedStatement ps = connection.prepareStatement("insert into student values('"+sId+"','"+sName+"','"+sEmail+"','"+sAddress+"')");
+	//			int i = ps.executeUpdate();
+	//			if (i>0) {
+	//				System.out.println("sucessfully inserted");
+	//
+	//			} else {
+	//				System.out.println("Failed");
+	//			}
+	//
+	//		} catch (ClassNotFoundException | SQLException e) {
+	//			e.printStackTrace();
+	//		}
+	//
+	//	}
+	//second method
+	//	public static void main(String[] args) {
+	//		int sId=3;
+	//		String sName="Ankita";
+	//		String sEmail="Harshanki@123";
+	//		String sAddress="WBengal";
+	//		try {
+	//			Class.forName("com.mysql.cj.jdbc.Driver");
+	//			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_db","root","tiger");
+	//			PreparedStatement prepareStatement = connection.prepareStatement("insert into student values(?,?,?,?)");
+	//			prepareStatement.setInt(1, sId);
+	//			prepareStatement.setString(2, sName);
+	//			prepareStatement.setString(3, sEmail);
+	//			prepareStatement.setString(4, sAddress);
+	//			int i = prepareStatement.executeUpdate();
+	//			if (i>0) {
+	//				System.out.println("sucessefully inserted");
+	//			} else {
+	//				System.out.println("Fail");
+	//			}
+	//
+	//
+	//		} catch (ClassNotFoundException |SQLException e) {
+	//			e.printStackTrace();
+	//		}                                                                                             
+	//	}
+
+	//using scanner class
+	//	public static void main(String[] args) {
+	//		Scanner scanner = new Scanner(System.in);
+	//		System.out.println("Enter the student details");
+	//		System.out.println("Enter studentID: ");
+	//		int sId = scanner.nextInt();
+	//		System.out.println("Enter StudentName:");
+	//		String sName = scanner.next();
+	//		System.out.println("Enter StudentEmail:");
+	//		String sEmail = scanner.next();
+	//		System.out.println("Enter StudentAddress:");
+	//		String sAddress = scanner.next();
+	//
+	//		try {
+	//			Class.forName("com.mysql.cj.jdbc.Driver");
+	//			Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc_db","root","tiger");
+	//			PreparedStatement ps = connection.prepareStatement("insert into student values(?,?,?,?)");
+	//			ps.setInt(1, sId);
+	//			ps.setString(2, sName);
+	//			ps.setString(3, sEmail);
+	//			ps.setString(4, sAddress);
+	//			int i = ps.executeUpdate();
+	//			if (i>0) {
+	//				System.out.println("Sucessfully inserted");
+	//			} else {
+	//				System.out.println("failed");
+	//			}
+	//		} catch (ClassNotFoundException|SQLException e) {
+	//			e.printStackTrace();
+	//		}
+	// }
+	//
+	//using properties file
+	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter the student details");
+		System.out.println("Enter studentID: ");
+		int sId = scanner.nextInt();
+		System.out.println("Enter StudentName:");
+		String sName = scanner.next();
+		System.out.println("Enter StudentEmail:");
+		String sEmail = scanner.next();
+		System.out.println("Enter StudentAddress:");
+		String sAddress = scanner.next();
+		Properties properties = new Properties();
+		try {
+			FileReader fileReader = new FileReader("config/appconfig.properties");
+			try {
+				properties.load(fileReader);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			String userName = properties.getProperty("dbuser");
+			String userPassword = properties.getProperty("dbpassword");
+			String driverpath = properties.getProperty("driverpath");
+			String url = properties.getProperty("url");
+
+
+			try {
+				Class.forName(driverpath);
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			}
+			Connection connection = DriverManager.getConnection(url,userName,userPassword);
+			PreparedStatement ps = connection.prepareStatement("insert into student values(?,?,?,?)");
+			ps.setInt(1, sId);
+			ps.setString(2, sName);
+			ps.setString(3, sEmail);
+			ps.setString(4, sAddress);
+			int i = ps.executeUpdate();
+			if (i>0) {
+				System.out.println("Sucessfully inserted");
+			} else {
+				System.out.println("failed");
+			}
+
+
+		} catch (FileNotFoundException|SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
+
+
+}
